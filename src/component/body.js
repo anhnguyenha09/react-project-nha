@@ -3,4 +3,4 @@ function Body() {
         <h1>Hello bạn</h1>
     )
 }
-export default body;
+// export default body;
