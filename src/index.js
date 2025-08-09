@@ -46,21 +46,7 @@ import './index.css';
 const root = createRoot(document.getElementById('root'));
 root.render(<App />);
 
-// ===== src/App.js =====
-import React from 'react';
-import Header from './components/Header';
-import Body from './components/Body';
-import Footer from './components/Footer';
 
-export default function App() {
-  return (
-    <div className="app-root">
-      <Header></Header>
-      <Body />
-      <Footer />
-    </div>
-  );
-}
 
 // // ===== src/components/Header.js =====
 // import React from 'react';

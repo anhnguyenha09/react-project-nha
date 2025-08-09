@@ -1,4 +1,7 @@
-function Header() {
+// ===== src/components/Header.js =====
+import React from 'react';
+
+export default function Header() {
     return (
         <header className="site-header">
             <div className="container">
@@ -10,5 +13,5 @@ function Header() {
                 </nav>
             </div>
         </header>
-    )
+    );
 }
