@@ -1,13 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Body from './body';
+import Header from './header';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <Body></Body>
+    <Header></Header>
+    {/* <h1>
+      Xin chao
+    </h1>
+    <div>
+      <label> Số thứ 1 </label>
+      <input placeholder='Nhập số thứ 1'></input>
+    </div>
+    <div>
+      <label> Số thứ 2 </label>
+      <input placeholder='Nhập số thứ 2'></input>
+    </div>
+    <span>Kết quả: ?</span> */}
+
   </React.StrictMode>
 );
 
