@@ -7,10 +7,20 @@ function LoginPage() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
+  const [number, setNumber] = useState(0);
+  //const number = 0;
+  const handleClickNumber = () => {
+    console.log("Tôi đã bị bấm vào.");
+    // setNumber(2);
+    setNumber((prev) => prev + 1)
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.get("http://localhost:3001/account");
+      //API endpoint (URL)
+      const res = await axios.get("http://localhost:3001/account")
+      console.log("res", res.data)
       const account = res.data.find(
         (acc) => acc.userName === email && acc.password === password
       );
@@ -27,9 +37,14 @@ function LoginPage() {
     }
   };
 
+
+
+
   return (
     <div style={styles.container}>
       <form style={styles.box} onSubmit={handleSubmit}>
+        <h1>{number}</h1>
+        <button onClick={handleClickNumber}>Tăng số</button>
         <h2 style={styles.title}>Đăng nhập</h2>
 
         <label style={styles.label}>Email</label>
