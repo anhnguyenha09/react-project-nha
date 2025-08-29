@@ -1,12 +1,11 @@
-// ===== src/components/Footer.js =====
-import React from 'react';
+import './Footer.css';
 
-export default function Footer() {
+function Footer() {
     return (
-        <footer className="site-footer">
-            <div className="container">
-                <p>© {new Date().getFullYear()} My React Site. All rights reserved.</p>
-            </div>
+        <footer className="footer">
+            <p>© {new Date().getFullYear()} My Website — All Rights Reserved 🚀</p>
         </footer>
     );
 }
+
+export default Footer;

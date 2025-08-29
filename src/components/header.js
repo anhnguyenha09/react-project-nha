@@ -1,17 +1,24 @@
-// ===== src/components/Header.js =====
-import React from 'react';
+import './Header.css';
 
-export default function Header() {
+function Header() {
     return (
-        <header className="site-header">
-            <div className="container">
-                <h1 className="logo">My React Site</h1>
-                <nav className="nav">
-                    <a href="#home">Home</a>
-                    <a href="#about">About</a>
-                    <a href="#contact">Contact</a>
+        <header className="header">
+            <div className="header-container">
+                {/* Logo */}
+                <h1 className="logo">🚀 My Website</h1>
+
+                {/* Navigation */}
+                <nav>
+                    <ul className="nav-menu">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
                 </nav>
             </div>
         </header>
     );
 }
+
+export default Header;
