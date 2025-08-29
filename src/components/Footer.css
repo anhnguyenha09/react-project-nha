@@ -1,0 +1,32 @@
+/* Footer container styles */
+.footer {
+    background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+    padding: 1.5rem 0;
+    text-align: center;
+    color: white;
+    border-top: 3px solid #ffeb3b;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer text styles */
+.footer p {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+/* Hover effect for emoji */
+.footer p:hover {
+    color: #ffeb3b;
+    transition: color 0.3s ease;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .footer p {
+        font-size: 0.9rem;
+        padding: 0 1rem;
+    }
+}

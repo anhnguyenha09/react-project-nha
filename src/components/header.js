@@ -5,7 +5,7 @@ function Header() {
         <header className="header">
             <div className="header-container">
                 {/* Logo */}
-                <h1 className="logo">🚀 My Website</h1>
+                <h1 className="logo">Quan ly sinh vien</h1>
 
                 {/* Navigation */}
                 <nav>
