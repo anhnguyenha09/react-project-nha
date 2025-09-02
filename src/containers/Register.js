@@ -1,19 +1,29 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import axios from 'axios';
 
 function Registration() {
     const { register, handleSubmit, formState: { errors }, watch } = useForm();
     const password = watch('password');
 
-    const onSubmit = (data) => {
-        fetch('data.json')
-            .then(res => res.json())
-            .then(existingData => {
-                const newData = [...existingData, data];
-                console.log('Dữ liệu đã được lưu:', newData);
-                alert('Đăng ký thành công!');
-            })
-            .catch(err => console.error('Lỗi khi lưu dữ liệu:', err));
+    // Hàm kiểm tra mật khẩu mạnh
+    const validateStrongPassword = value =>
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(value) ||
+        'Mật khẩu phải ít nhất 8 ký tự, gồm chữ hoa, chữ thường, số và ký tự đặc biệt';
+
+    const onSubmit = async (data) => {
+        try {
+            await axios.post('http://localhost:3001/account', {
+                studentId: data.maSinhVien,
+                name: data.hoVaTen,
+                email: data.email,
+                password: data.password
+            });
+            alert('Đăng ký thành công!');
+        } catch (err) {
+            console.error('Lỗi khi lưu dữ liệu:', err);
+            alert('Lỗi khi lưu dữ liệu!');
+        }
     };
 
     return (
@@ -26,7 +36,6 @@ function Registration() {
                     {...register('maSinhVien', { required: 'Mã sinh viên là bắt buộc' })}
                     placeholder="Nhập mã sinh viên..."
                     style={styles.input}
-                    required
                 />
                 {errors.maSinhVien && <p style={styles.error}>{errors.maSinhVien.message}</p>}
 
@@ -35,7 +44,6 @@ function Registration() {
                     {...register('hoVaTen', { required: 'Họ và tên là bắt buộc' })}
                     placeholder="Nhập họ và tên..."
                     style={styles.input}
-                    required
                 />
                 {errors.hoVaTen && <p style={styles.error}>{errors.hoVaTen.message}</p>}
 
@@ -50,17 +58,18 @@ function Registration() {
                     })}
                     placeholder="Nhập email..."
                     style={styles.input}
-                    required
                 />
                 {errors.email && <p style={styles.error}>{errors.email.message}</p>}
 
                 <label style={styles.label}>Mật khẩu</label>
                 <input
                     type="password"
-                    {...register('password', { required: 'Mật khẩu là bắt buộc', minLength: 6 })}
+                    {...register('password', {
+                        required: 'Mật khẩu là bắt buộc',
+                        validate: validateStrongPassword
+                    })}
                     placeholder="Nhập mật khẩu..."
                     style={styles.input}
-                    required
                 />
                 {errors.password && <p style={styles.error}>{errors.password.message}</p>}
 
@@ -73,7 +82,6 @@ function Registration() {
                     })}
                     placeholder="Xác nhận mật khẩu..."
                     style={styles.input}
-                    required
                 />
                 {errors.confirmPassword && <p style={styles.error}>{errors.confirmPassword.message}</p>}
 

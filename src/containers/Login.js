@@ -35,7 +35,7 @@ function LoginPage() {
         <label style={styles.label}>Email</label>
         <input
           type="text"
-          placeholder="Nhập tên đăng nhập..."
+          placeholder="Nhập email..."
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           style={styles.input}
@@ -55,12 +55,66 @@ function LoginPage() {
         <button type="submit" style={styles.button}>
           Đăng nhập
         </button>
+
+        {/* Nút chuyển hướng sang Register */}
+        <button
+          type="button"
+          style={{ ...styles.button, background: "#6c63ff", marginTop: "10px" }}
+          onClick={() => navigate("/register")}
+        >
+          Chưa có tài khoản? Đăng ký
+        </button>
       </form>
     </div>
   );
 }
 
-
-const styles = { container: { height: "100vh", display: "flex", justifyContent: "center", alignItems: "center", background: "linear-gradient(120deg, #0d6efd, #6c63ff)", margin: 0, fontFamily: "Arial, sans-serif", }, box: { background: "white", padding: "30px", borderRadius: "10px", boxShadow: "0 4px 12px rgba(0,0,0,0.1)", width: "300px", display: "flex", flexDirection: "column", }, title: { textAlign: "center", marginBottom: "20px", color: "#333", }, label: { fontSize: "14px", marginBottom: "5px", color: "#555", }, input: { padding: "10px", marginBottom: "15px", borderRadius: "5px", border: "1px solid #ccc", outline: "none", fontSize: "14px", }, button: { padding: "10px", background: "#0d6efd", color: "white", fontSize: "16px", border: "none", borderRadius: "5px", cursor: "pointer", }, };
+const styles = {
+  container: {
+    height: "100vh",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    background: "linear-gradient(120deg, #0d6efd, #6c63ff)",
+    margin: 0,
+    fontFamily: "Arial, sans-serif",
+  },
+  box: {
+    background: "white",
+    padding: "30px",
+    borderRadius: "10px",
+    boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+    width: "300px",
+    display: "flex",
+    flexDirection: "column",
+  },
+  title: {
+    textAlign: "center",
+    marginBottom: "20px",
+    color: "#333",
+  },
+  label: {
+    fontSize: "14px",
+    marginBottom: "5px",
+    color: "#555",
+  },
+  input: {
+    padding: "10px",
+    marginBottom: "15px",
+    borderRadius: "5px",
+    border: "1px solid #ccc",
+    outline: "none",
+    fontSize: "14px",
+  },
+  button: {
+    padding: "10px",
+    background: "#0d6efd",
+    color: "white",
+    fontSize: "16px",
+    border: "none",
+    borderRadius: "5px",
+    cursor: "pointer",
+  },
+};
 
 export default LoginPage;
