@@ -1,4 +1,5 @@
 import './Header.css';
+import { Link } from 'react-router-dom';
 
 function Header() {
     return (
@@ -10,10 +11,10 @@ function Header() {
                 {/* Navigation */}
                 <nav>
                     <ul className="nav-menu">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Services</a></li>
-                        <li><a href="#">Contact</a></li>
+                        <li><Link to="/" style={{color: 'white', textDecoration: 'none'}}>Đăng ký</Link></li>
+                        <li><Link to="/login" style={{color: 'white', textDecoration: 'none'}}>Đăng nhập</Link></li>
+                        <li><Link to="/studentlist" style={{color: 'white', textDecoration: 'none'}}>Danh sách SV</Link></li>
+                        <li><Link to="/info" style={{color: 'white', textDecoration: 'none'}}>Thông tin</Link></li>
                     </ul>
                 </nav>
             </div>

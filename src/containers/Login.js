@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 
 function LoginPage() {
@@ -32,10 +32,10 @@ function LoginPage() {
       <form style={styles.box} onSubmit={handleSubmit}>
         <h2 style={styles.title}>Đăng nhập</h2>
 
-        <label style={styles.label}>Email</label>
+        <label style={styles.label}>Tên đăng nhập</label>
         <input
           type="text"
-          placeholder="Nhập email..."
+          placeholder="Nhập tên đăng nhập..."
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           style={styles.input}
@@ -56,65 +56,81 @@ function LoginPage() {
           Đăng nhập
         </button>
 
-        {/* Nút chuyển hướng sang Register */}
-        <button
-          type="button"
-          style={{ ...styles.button, background: "#6c63ff", marginTop: "10px" }}
-          onClick={() => navigate("/register")}
-        >
-          Chưa có tài khoản? Đăng ký
-        </button>
+        <div style={styles.linkContainer}>
+          <p style={styles.linkText}>Chưa có tài khoản? </p>
+          <Link to="/" style={styles.link}>Đăng ký ngay</Link>
+        </div>
       </form>
     </div>
   );
 }
 
 const styles = {
-  container: {
-    height: "100vh",
+  container: { 
+    height: "100vh", 
+    display: "flex", 
+    justifyContent: "center", 
+    alignItems: "center", 
+    background: "linear-gradient(120deg, #0d6efd, #6c63ff)", 
+    margin: 0, 
+    fontFamily: "Arial, sans-serif", 
+  }, 
+  box: { 
+    background: "white", 
+    padding: "30px", 
+    borderRadius: "10px", 
+    boxShadow: "0 4px 12px rgba(0,0,0,0.1)", 
+    width: "350px", 
+    display: "flex", 
+    flexDirection: "column", 
+  }, 
+  title: { 
+    textAlign: "center", 
+    marginBottom: "20px", 
+    color: "#333", 
+  }, 
+  label: { 
+    fontSize: "14px", 
+    marginBottom: "5px", 
+    color: "#555", 
+  }, 
+  input: { 
+    padding: "10px", 
+    marginBottom: "15px", 
+    borderRadius: "5px", 
+    border: "1px solid #ccc", 
+    outline: "none", 
+    fontSize: "14px", 
+  }, 
+  button: { 
+    padding: "12px", 
+    background: "#0d6efd", 
+    color: "white", 
+    fontSize: "16px", 
+    border: "none", 
+    borderRadius: "5px", 
+    cursor: "pointer", 
+    marginBottom: "15px",
+    transition: "background-color 0.3s ease",
+  },
+  linkContainer: {
+    textAlign: "center",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    background: "linear-gradient(120deg, #0d6efd, #6c63ff)",
+    gap: "5px",
+  },
+  linkText: {
     margin: 0,
-    fontFamily: "Arial, sans-serif",
-  },
-  box: {
-    background: "white",
-    padding: "30px",
-    borderRadius: "10px",
-    boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-    width: "300px",
-    display: "flex",
-    flexDirection: "column",
-  },
-  title: {
-    textAlign: "center",
-    marginBottom: "20px",
-    color: "#333",
-  },
-  label: {
     fontSize: "14px",
-    marginBottom: "5px",
-    color: "#555",
+    color: "#666",
   },
-  input: {
-    padding: "10px",
-    marginBottom: "15px",
-    borderRadius: "5px",
-    border: "1px solid #ccc",
-    outline: "none",
+  link: {
+    color: "#0d6efd",
+    textDecoration: "none",
     fontSize: "14px",
-  },
-  button: {
-    padding: "10px",
-    background: "#0d6efd",
-    color: "white",
-    fontSize: "16px",
-    border: "none",
-    borderRadius: "5px",
-    cursor: "pointer",
-  },
+    fontWeight: "500",
+  }
 };
 
 export default LoginPage;
