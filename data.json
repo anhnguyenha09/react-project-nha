@@ -1,0 +1,57 @@
+{
+  "account": [
+    {
+      "id": 1,
+      "studentId": "SV001",
+      "name": "Nguyễn Hà Anh",
+      "email": "11236052@st.neu.edu.vn",
+      "password": "123456"
+    },
+    {
+      "id": 2,
+      "studentId": "SV002", 
+      "name": "Phạm Hồng Sơn",
+      "email": "11236196@st.neu.edu.vn",
+      "password": "123456"
+    }
+  ],
+  "students": [
+    {
+      "id": 1,
+      "studentId": "SV001",
+      "name": "Nguyễn Hà Anh",
+      "email": "11236052@st.neu.edu.vn",
+      "class": "CNTT-K15",
+      "year": 2020
+    },
+    {
+      "id": 2,
+      "studentId": "SV002",
+      "name": "Phạm Hồng Sơn", 
+      "email": "11236196@st.neu.edu.vn",
+      "class": "CNTT-K15",
+      "year": 2020
+    },
+    {
+      "id": 3,
+      "studentId": "SV003",
+      "name": "Lê Văn C",
+      "email": "levanc@gmail.com", 
+      "class": "CNTT-K16",
+      "year": 2021
+    },
+    {
+      "id": 4,
+      "studentId": "SV004",
+      "name": "Phạm Thị D",
+      "email": "phamthid@gmail.com",
+      "class": "CNTT-K16", 
+      "year": 2021
+    }
+  ]
+}
+const accounts = [
+  { id: 1, userName: "student1@gmail.com", password: "Password@123" },
+  { id: 2, userName: "student2@gmail.com", password: "Password@456" }
+];
+localStorage.setItem('accounts', JSON.stringify(accounts));
