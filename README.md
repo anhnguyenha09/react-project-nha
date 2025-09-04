@@ -71,5 +71,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 ### Bổ sung thêm cách chạy
 
-Mở 1 terminal: gõ 'node server.js' (cái này phải làm trước)
+Mở 1 terminal: gõ 'node server.js' (cái này phải làm trước).\
 Mở terminal tiếp theo: gõ 'npm start'
