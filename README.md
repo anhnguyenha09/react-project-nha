@@ -70,6 +70,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
 ### Bổ sung thêm cách chạy
-
+Nhớ tải express thông qua lệnh 'npm install express cors'
 Mở 1 terminal: gõ 'node server.js' (cái này phải làm trước).\
 Mở terminal tiếp theo: gõ 'npm start'
