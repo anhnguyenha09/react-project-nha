@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 function StudentList() {
-    const API_URL = "http://localhost:3001/users";
+    const API_URL = "http://localhost:3000/students";
     const [students, setStudents] = useState([]);
+    const [fullName, setFullName] = useState("");
+    const [email, setEmail] = useState("");
 
     useEffect(() => {
         fetchAPI();
@@ -20,7 +22,11 @@ function StudentList() {
 
     return (
         <div style={{ padding: 20 }}>
-            <h1 style={{ textAlign: "center", color: "#1e3a8a", marginBottom: "1.5rem" }}>Danh sách sinh viên Fit-up</h1>
+            <h1 style={{ textAlign: "center", color: "#1e3a8a", marginBottom: "1.5rem" }}>Danh sách sinh viên Fit Up</h1>
+
+
+            {/* danh sách sinh viên */}
+
             <table style={{ width: "100%", borderCollapse: "collapse" }}>
                 <thead>
                     <tr>

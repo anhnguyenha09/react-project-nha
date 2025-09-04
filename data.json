@@ -1,57 +1,60 @@
 {
-  "account": [
+  "students": [
     {
-      "id": 1,
-      "studentId": "SV001",
-      "name": "Nguyễn Hà Anh",
       "email": "11236052@st.neu.edu.vn",
+      "name": "Nguyễn Hà Anh",
+      "studentId": "11236052",
+      "id": "42ba"
+    },
+    {
+      "email": "11236196@st.neu.edu.vn",
+      "name": "Phạm Hồng Sơn",
+      "studentId": "11236196",
+      "id": "d939"
+    },
+    {
+      "studentId": "11236140",
+      "name": "Lê Thị Linh",
+      "email": "11236140@st.neu.edu.vn",
+      "id": "7079"
+    },
+    {
+      "studentId": "11236100",
+      "name": "Đặng Tiến Hải",
+      "email": "11236100@st.neu.edu.vn",
+      "id": "a1ac"
+    },
+    {
+      "studentId": "11236175",
+      "name": "Trần Yến Nhi",
+      "email": "11236175@st.neu.edu.vn",
+      "id": "e9f4"
+    },
+    {
+      "id": "4c02",
+      "name": "Phạm Thái Sơn",
+      "email": "tiki@gmail.com"
+    },
+    {
+      "id": "1cab",
+      "studentId": "11210000",
+      "name": "Trần Đức",
+      "email": "11210000@st.neu.edu.vn",
       "password": "123456"
     },
     {
-      "id": 2,
-      "studentId": "SV002", 
-      "name": "Phạm Hồng Sơn",
-      "email": "11236196@st.neu.edu.vn",
+      "id": "5f60",
+      "studentId": "11211111",
+      "name": "Nguyễn Lan",
+      "email": "11211111@st.neu.edu.vn",
       "password": "123456"
     }
   ],
-  "students": [
+  "account": [
     {
-      "id": 1,
-      "studentId": "SV001",
-      "name": "Nguyễn Hà Anh",
-      "email": "11236052@st.neu.edu.vn",
-      "class": "CNTT-K15",
-      "year": 2020
-    },
-    {
-      "id": 2,
-      "studentId": "SV002",
-      "name": "Phạm Hồng Sơn", 
-      "email": "11236196@st.neu.edu.vn",
-      "class": "CNTT-K15",
-      "year": 2020
-    },
-    {
-      "id": 3,
-      "studentId": "SV003",
-      "name": "Lê Văn C",
-      "email": "levanc@gmail.com", 
-      "class": "CNTT-K16",
-      "year": 2021
-    },
-    {
-      "id": 4,
-      "studentId": "SV004",
-      "name": "Phạm Thị D",
-      "email": "phamthid@gmail.com",
-      "class": "CNTT-K16", 
-      "year": 2021
+      "userName": "admin",
+      "password": "123456",
+      "id": "7221"
     }
   ]
 }
-const accounts = [
-  { id: 1, userName: "student1@gmail.com", password: "Password@123" },
-  { id: 2, userName: "student2@gmail.com", password: "Password@456" }
-];
-localStorage.setItem('accounts', JSON.stringify(accounts));

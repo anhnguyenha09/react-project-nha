@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import axios from "axios";
+import { useNavigate, Link } from "react-router-dom";
 
 function Registration() {
     const [formData, setFormData] = useState({
-        maSinhVien: "",
-        hoVaTen: "",
+        studentId: "",
+        name: "",
         email: "",
         password: "",
         confirmPassword: ""
@@ -19,11 +20,13 @@ function Registration() {
         }));
     };
 
+
+
     const validateForm = () => {
         const newErrors = {};
-        
-        if (!formData.maSinhVien) newErrors.maSinhVien = "Mã sinh viên là bắt buộc";
-        if (!formData.hoVaTen) newErrors.hoVaTen = "Họ và tên là bắt buộc";
+
+        if (!formData.studentId) newErrors.studentId = "Mã sinh viên là bắt buộc";
+        if (!formData.name) newErrors.name = "Họ và tên là bắt buộc";
         if (!formData.email) {
             newErrors.email = "Email là bắt buộc";
         } else if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(formData.email)) {
@@ -44,20 +47,30 @@ function Registration() {
         e.preventDefault();
         if (!validateForm()) return;
 
-        // Lưu dữ liệu (giả lập - trong thực tế sẽ call API)
-        console.log('Dữ liệu đăng ký:', formData);
-        alert('Đăng ký thành công! Bạn có thể đăng nhập ngay.');
-        
-        // Reset form
-        setFormData({
-            maSinhVien: "",
-            hoVaTen: "",
-            email: "",
-            password: "",
-            confirmPassword: ""
-        });
-        setErrors({});
+        axios.post("http://localhost:3000/students", {
+            studentId: formData.studentId,
+            name: formData.name,
+            email: formData.email,
+            password: formData.password
+        })
+            .then(() => {
+                alert("Đăng ký thành công! Bạn có thể đăng nhập ngay.");
+                navigate("/login");
+                setFormData({
+                    studentId: "",
+                    name: "",
+                    email: "",
+                    password: "",
+                    confirmPassword: ""
+                });
+                setErrors({});
+            })
+            .catch((error) => {
+                console.error("Lỗi khi lưu dữ liệu:", error);
+                alert("Có lỗi xảy ra khi đăng ký!");
+            });
     };
+
 
     return (
         <div style={styles.container}>
@@ -67,24 +80,24 @@ function Registration() {
                 <label style={styles.label}>Mã sinh viên</label>
                 <input
                     type="text"
-                    name="maSinhVien"
+                    name="studentId"
                     placeholder="Nhập mã sinh viên..."
-                    value={formData.maSinhVien}
+                    value={formData.studentId}
                     onChange={handleChange}
                     style={styles.input}
                 />
-                {errors.maSinhVien && <p style={styles.error}>{errors.maSinhVien}</p>}
+                {errors.studentId && <p style={styles.error}>{errors.studentId}</p>}
 
                 <label style={styles.label}>Họ và tên</label>
                 <input
                     type="text"
-                    name="hoVaTen"
+                    name="name"
                     placeholder="Nhập họ và tên..."
-                    value={formData.hoVaTen}
+                    value={formData.name}
                     onChange={handleChange}
                     style={styles.input}
                 />
-                {errors.hoVaTen && <p style={styles.error}>{errors.hoVaTen}</p>}
+                {errors.name && <p style={styles.error}>{errors.name}</p>}
 
                 <label style={styles.label}>Email</label>
                 <input
