@@ -34,7 +34,7 @@ function LoginPage() {
 
         <label style={styles.label}>Email</label>
         <input
-          type="text"
+          type="email"
           placeholder="Nhập email..."
           value={email}
           onChange={(e) => setEmail(e.target.value)}

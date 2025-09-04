@@ -11,6 +11,7 @@ function Registration() {
         confirmPassword: ""
     });
     const [errors, setErrors] = useState({});
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -19,8 +20,6 @@ function Registration() {
             [name]: value
         }));
     };
-
-
 
     const validateForm = () => {
         const newErrors = {};
@@ -43,34 +42,62 @@ function Registration() {
         return Object.keys(newErrors).length === 0;
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         if (!validateForm()) return;
 
-        axios.post("http://localhost:3000/students", {
-            studentId: formData.studentId,
-            name: formData.name,
-            email: formData.email,
-            password: formData.password
-        })
-            .then(() => {
-                alert("Đăng ký thành công! Bạn có thể đăng nhập ngay.");
-                navigate("/login");
-                setFormData({
-                    studentId: "",
-                    name: "",
-                    email: "",
-                    password: "",
-                    confirmPassword: ""
-                });
-                setErrors({});
-            })
-            .catch((error) => {
-                console.error("Lỗi khi lưu dữ liệu:", error);
-                alert("Có lỗi xảy ra khi đăng ký!");
-            });
-    };
+        console.log("Bắt đầu đăng ký...");
 
+        try {
+            // Dữ liệu để thêm vào students
+            const studentData = {
+                studentId: formData.studentId,
+                name: formData.name,
+                email: formData.email,
+                password: formData.password
+            };
+
+            // Dữ liệu để thêm vào account
+            const accountData = {
+                userName: formData.email,
+                password: formData.password
+            };
+
+            console.log("Dữ liệu sinh viên:", studentData);
+            console.log("Dữ liệu account:", accountData);
+
+            // QUAN TRỌNG: Đảm bảo URL chính xác
+            console.log("Đang POST đến: http://localhost:3000/students");
+            const studentResponse = await axios.post("http://localhost:3000/students", studentData);
+            console.log("Kết quả thêm student:", studentResponse.data);
+            
+            console.log("Đang POST đến: http://localhost:3000/account");
+            const accountResponse = await axios.post("http://localhost:3000/account", accountData);
+            console.log("Kết quả thêm account:", accountResponse.data);
+
+            alert("Đăng ký thành công! Bạn có thể đăng nhập ngay.");
+            
+            // Reset form
+            setFormData({
+                studentId: "",
+                name: "",
+                email: "",
+                password: "",
+                confirmPassword: ""
+            });
+            setErrors({});
+            
+            console.log("Đang chuyển hướng đến /login...");
+            navigate("/login");
+
+        } catch (error) {
+            console.error("Chi tiết lỗi:", error);
+            console.error("Response data:", error.response?.data);
+            console.error("Response status:", error.response?.status);
+            console.error("Request URL:", error.config?.url);
+            alert("Có lỗi xảy ra khi đăng ký! Kiểm tra console để biết chi tiết.");
+        }
+    };
 
     return (
         <div style={styles.container}>
